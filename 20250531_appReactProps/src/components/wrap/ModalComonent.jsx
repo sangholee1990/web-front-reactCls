@@ -4,7 +4,9 @@ export default function ModalComonent({모달, modalCloseEvent}) {
         // 모달 닫기
         modalCloseEvent()
     }
-    
+
+    // console.log(모달);
+
     // 프롭스: 부모 > 자식
     return (
         // <div id="modal">
@@ -13,12 +15,13 @@ export default function ModalComonent({모달, modalCloseEvent}) {
         <div className={`layer-popup ${모달.isOn ? ' on' : ''}`}>
             <div className="container">
                 <div className="title">
-                    <h2>Lorem ipsum dolor sit amet consectetur.</h2>
+                    {/*<h2>Lorem ipsum dolor sit amet consectetur.</h2>*/}
+                    <h2>{모달.item.날짜}</h2>
                 </div>
                 <div className="content">
                     <ul>
                         {/* <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda ab quibusdam fugit rem in. Officia, aut iusto! Animi harum, qui, esse recusandae voluptas aliquid dolores corporis voluptates maiores et mollitia?</li> */}
-                        <li>{모달.공지글}</li>
+                        <li>{모달.item.공지글}</li>
                     </ul>
                 </div>
                 <div className="button-box">

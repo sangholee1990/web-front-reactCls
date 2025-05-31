@@ -9,7 +9,7 @@ export default function WrapComonent() {
     const [state, setState] = React.useState({
         모달: {
             isOn: false,
-            공지글: ''
+            item: {공지글: '', 날짜: ''}
         }
     });
 
@@ -17,11 +17,14 @@ export default function WrapComonent() {
     // 그래서 부모 컴포넌트에서 자식이 변경하도록 변경 함수를 만든다.
     // 그리고 자식에서 함수를 프롭스로 내려준다.
 
-    const modalOpenEvent=(공지글)=>{
+    const modalOpenEvent=(item)=>{
+
+        console.log(item);
+
         setState({
             모달: {
                 isOn: true,
-                공지글: 공지글
+                item: item.item
             }
         })
     }
@@ -30,7 +33,7 @@ export default function WrapComonent() {
         setState({
             모달: {
                 isOn: false,
-                공지글: ''
+                item: {공지글: '', 날짜: ''}
             }
         })
     }
