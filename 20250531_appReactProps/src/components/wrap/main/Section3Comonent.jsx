@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Section3Comonent() {
+export default function Section3Comonent({modalOpenEvent}) {
 
     const [state, setState] = React.useState({
         공지사항: [{
@@ -40,6 +40,17 @@ export default function Section3Comonent() {
         setIsOn(false);
     };
 
+    const onClickOpenBtn = (e, item) => {
+        e.preventDefault();
+
+        // console.log(item);
+        // 최상위 컴포넌트가 보내준 모달열기 함수
+        modalOpenEvent({
+            // isOn: true,
+            공지글: item.공지글
+        });
+    };
+
     return (
         // <section id="section3">
         //     <h2>Section3Comonent</h2>
@@ -63,7 +74,7 @@ export default function Section3Comonent() {
 
                         {state.공지사항.map((item, index) => (
                             <li key={index}>
-                                <a href="!#" className={item.className ? item.className : ''}>
+                                <a href="!#" className={item.className ? item.className : ''} onClick={(e)=>onClickOpenBtn(e, item)}>
                                     {item.공지글}
                                 </a>
                                 <span>{item.날짜}</span>
