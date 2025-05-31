@@ -25,8 +25,20 @@ export default function Section3Comonent() {
             { src: "./images/gallery1.jpg", alt: "gallery1", title: "gallery1" },
             { src: "./images/gallery2.jpg", alt: "gallery2", title: "gallery2" },
             { src: "./images/gallery3.jpg", alt: "gallery3", title: "gallery3" }
-        ]
+        ],
     });
+
+    const [isOn, setIsOn] = React.useState(false);
+
+    const onClickGalleryBtn = (e) => {
+        e.preventDefault();
+        setIsOn(true);
+    };
+
+    const onClickNoticeBtn = (e) => {
+        e.preventDefault();
+        setIsOn(false);
+    };
 
     return (
         // <section id="section3">
@@ -34,8 +46,10 @@ export default function Section3Comonent() {
         // </section>
         <section id="section3">
             <div className="container">
-                <button className="notice-btn">공지사항</button><button className="gallery-btn">갤러리</button>
-                <div className="notice-box">
+                <button className={`notice-btn ${isOn ? 'on' : ''}`} onClick={onClickNoticeBtn}>공지사항</button>
+                <button className={`gallery-btn ${isOn ? 'on' : ''}`} onClick={onClickGalleryBtn}>갤러리</button>
+                
+                <div className={`notice-box ${isOn ? 'on' : ''}`}>
                     <ul>
                         {/* <li><a href="!#" className="open-btn">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit, in! Odio, repellendus. Labore modi sapiente cumque dolor nihil debitis ullam nobis? Sunt praesentium labore sapiente deserunt autem obcaecati alias fuga?</a><span>2024-09-10</span></li>
                         <li><a href="!#">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit, in! Odio, repellendus. Labore modi sapiente cumque dolor nihil debitis ullam nobis? Sunt praesentium labore sapiente deserunt autem obcaecati alias fuga?</a><span>2024-09-10</span></li>
@@ -59,7 +73,7 @@ export default function Section3Comonent() {
                     </ul>
                 </div>
                 
-                <div className="gallery-box">
+                <div className={`gallery-box ${isOn ? 'on' : ''}`}>
                     <ul>
                         {/* <li><a href="!#" title="gallery1"><img src="./images/gallery1.jpg" alt="gallery1"/></a></li>
                         <li><a href="!#" title="gallery2"><img src="./images/gallery2.jpg" alt="gallery2"/></a></li>
