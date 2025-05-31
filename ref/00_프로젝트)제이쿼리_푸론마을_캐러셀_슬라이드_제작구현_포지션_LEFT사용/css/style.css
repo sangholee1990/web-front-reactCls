@@ -1,0 +1,500 @@
+@charset "UTF-8";
+@import url("./reset.css");
+#wrap {
+  width: 100%;
+  height: 970px;
+  display: flex;
+  flex-flow: row wrap;
+}
+#wrap #header {
+  width: 200px;
+  height: 850px;
+  position: relative;
+  z-index: 3;
+}
+#wrap #header .row1 {
+  width: 100%;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* 로고 : 워드 타입 */
+}
+#wrap #header .row1 h1 {
+  width: 100%;
+}
+#wrap #header .row1 h1 a {
+  font-size: 37.5px;
+  font-weight: 600;
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+#wrap #header .row1 h1 a span {
+  color: rgba(25, 28, 29, 0.7);
+}
+#wrap #header .row1 h1 a em {
+  color: rgba(200, 70, 100, 0.7);
+}
+#wrap #header .row2 {
+  width: 100%;
+  height: calc(100% - 150px);
+  background: rgb(70, 150, 200);
+}
+#wrap #header .row2 #nav {
+  width: 100%;
+  padding: 10px;
+}
+#wrap #header .row2 #nav > ul {
+  width: 100%;
+}
+#wrap #header .row2 #nav > ul > li {
+  width: 100%;
+}
+#wrap #header .row2 #nav > ul > li > a {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  background: rgb(70, 150, 200);
+}
+#wrap #header .row2 #nav > ul > li > a:hover {
+  background: rgb(50, 170, 240);
+}
+#wrap #header .row2 #nav > ul > li > a.on {
+  background: rgb(50, 170, 240);
+}
+#wrap #header .row2 #nav > ul > li > .sub {
+  position: absolute;
+  top: 160px;
+  left: 190px;
+  width: calc(100vw - 17px - 190px); /* Viewport width vw 반응형 */
+  background: rgb(50, 170, 240);
+  display: none;
+}
+#wrap #header .row2 #nav > ul > li > .sub ul {
+  width: 100%;
+  padding: 30px 20px;
+}
+#wrap #header .row2 #nav > ul > li > .sub ul li {
+  width: 100%;
+  padding: 10px 0;
+  display: flex;
+}
+#wrap #header .row2 #nav > ul > li > .sub ul li span {
+  width: 110px;
+}
+#wrap #header .row2 #nav > ul > li > .sub ul li span a {
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  background: rgb(50, 170, 240);
+  padding: 6px 10px;
+}
+#wrap #header .row2 #nav > ul > li > .sub ul li span a:hover {
+  background: rgb(70, 150, 200);
+}
+#wrap #main {
+  width: calc(100% - 200px);
+  height: 850px;
+  position: relative;
+  z-index: 2;
+}
+#wrap #main #section1 {
+  width: 100%;
+  height: 400px;
+  /* 메인슬라이드 */
+  /* 바로가기 */
+}
+#wrap #main #section1 .slide-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+#wrap #main #section1 .slide-container .slide-view {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+#wrap #main #section1 .slide-container .slide-view .slide-wrap {
+  width: 500%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  margin-left: -100%;
+  left: 0%;
+}
+#wrap #main #section1 .slide-container .slide-view .slide-wrap .slide {
+  width: 100%;
+  height: 100%;
+}
+#wrap #main #section1 .slide-container .slide-view .slide-wrap .slide a {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+#wrap #main #section1 .slide-container .slide-view .slide-wrap .slide a img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  z-index: 1;
+  position: relative;
+}
+#wrap #main #section1 .slide-container .slide-view .slide-wrap .slide a h2 {
+  font-size: 28px;
+  font-weight: 500;
+  background: rgba(90, 150, 40, 0.7);
+  color: rgb(255, 255, 255);
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  z-index: 2;
+  padding: 17px 30px 14px 30px;
+  border-radius: 3px;
+  margin-top: -30px;
+  margin-right: -200px;
+}
+#wrap #main #section1 .link {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 150px;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.8);
+}
+#wrap #main #section1 .link ul {
+  padding: 10px 10px;
+  width: 100%;
+}
+#wrap #main #section1 .link ul li {
+  width: 100%;
+}
+#wrap #main #section1 .link ul li a {
+  width: 100%;
+  display: block;
+}
+#wrap #main #section1 .link ul li a img {
+  width: 100%;
+  transition: all 0.3s;
+}
+#wrap #main #section1 .link ul li a img:hover {
+  opacity: 0.7;
+}
+#wrap #main #section1 .link ul li i {
+  width: 100%;
+  display: block;
+  padding: 5px 0;
+}
+#wrap #main #section2 {
+  width: 100%;
+  height: 200px;
+  padding: 10px;
+}
+#wrap #main #section2 .container {
+  width: 100%;
+  height: 100%;
+}
+#wrap #main #section2 .container a {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background: #f0f0f0;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+#wrap #main #section2 .container a .content {
+  display: flex;
+  width: 80%;
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s;
+}
+#wrap #main #section2 .container a .content .col1 {
+  width: 150px;
+}
+#wrap #main #section2 .container a .content .col1 img {
+  width: 100%;
+  transition: 0.3s;
+}
+#wrap #main #section2 .container a .content .col2 {
+  padding-left: 30px;
+}
+#wrap #main #section2 .container a .content .col2 h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #222;
+  padding-bottom: 10px;
+}
+#wrap #main #section2 .container a .content .col2 p {
+  line-height: 140%;
+  padding-right: 130px;
+}
+#wrap #main #section2 .container a:hover .content .col1 img {
+  opacity: 0.8;
+}
+#wrap #main #section2 .container a .arrow-btn {
+  z-index: 2;
+  position: absolute;
+  top: 50%;
+  right: 13%;
+  width: 50px;
+  height: 10px;
+  background: #000;
+  /* border: 1px solid #000; */
+  margin-top: -5px;
+  border-radius: 5px;
+  transform-origin: calc(100% - 5px) 50%; /*  수평 0 좌측시작  50% 가운데  100% 끝  수직 0% 바톰  50% 가운데  100%  탑*/
+}
+#wrap #main #section2 .container a .arrow-btn.btn1 {
+  transform: rotate(45deg);
+}
+#wrap #main #section2 .container a .arrow-btn.btn2 {
+  transform: rotate(-45deg);
+}
+#wrap #main #section3 {
+  width: 100%;
+  height: 250px;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+}
+#wrap #main #section3 .container {
+  width: 100%;
+  height: 100%;
+  padding-top: 45px;
+  position: relative;
+}
+#wrap #main #section3 .container button {
+  height: 46px;
+  width: 100px;
+  position: absolute;
+  top: 0;
+  border: 1px solid #ccc;
+  border-radius: 5px 5px 0 0;
+  font-size: 16px;
+}
+#wrap #main #section3 .container button.notice-btn {
+  border-bottom: 0;
+  left: 10px;
+  background: #fff;
+  z-index: 3;
+  cursor: default;
+}
+#wrap #main #section3 .container button.notice-btn.on {
+  background: #eee;
+  z-index: 1;
+  cursor: pointer;
+}
+#wrap #main #section3 .container button.gallery-btn {
+  left: 110px;
+  background: #eee;
+  cursor: pointer;
+  z-index: 1;
+}
+#wrap #main #section3 .container button.gallery-btn.on {
+  border-bottom: 0;
+  background: #fff;
+  z-index: 3;
+  cursor: default;
+}
+#wrap #main #section3 .container .notice-box {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #ccc;
+  position: relative;
+  z-index: 2;
+  padding: 20px 50px;
+  display: flex;
+  align-items: center;
+}
+#wrap #main #section3 .container .notice-box.on {
+  display: none;
+}
+#wrap #main #section3 .container .notice-box ul {
+  width: 100%;
+}
+#wrap #main #section3 .container .notice-box ul li {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  line-height: 200%;
+}
+#wrap #main #section3 .container .notice-box ul li a {
+  width: 80%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#wrap #main #section3 .container .notice-box ul li a:hover {
+  text-decoration: underline;
+}
+#wrap #main #section3 .container .notice-box ul li span {
+  width: 100px;
+  color: #999;
+}
+#wrap #main #section3 .container .gallery-box {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #ccc;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  display: none;
+}
+#wrap #main #section3 .container .gallery-box.on {
+  display: flex;
+}
+#wrap #main #section3 .container .gallery-box ul {
+  display: flex;
+  width: 100%;
+}
+#wrap #main #section3 .container .gallery-box ul li {
+  width: 33.333%;
+}
+#wrap #main #section3 .container .gallery-box ul li a {
+  margin: 0 50px;
+  display: block;
+  width: auto;
+}
+#wrap #main #section3 .container .gallery-box ul li a img {
+  width: 100%;
+  transition: all 0.3s;
+}
+#wrap #main #section3 .container .gallery-box ul li a img:hover {
+  opacity: 0.7;
+}
+#wrap #footer {
+  width: 100%;
+  height: 120px;
+  display: flex;
+  position: relative;
+  z-index: 1;
+  background: rgba(70, 150, 200, 0.3);
+  border-top: 1px solid #ccc;
+}
+#wrap #footer .col1 {
+  width: 200px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#wrap #footer .col1 h1 {
+  width: 100%;
+}
+#wrap #footer .col1 h1 a {
+  font-size: 37.5px;
+  font-weight: 600;
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+#wrap #footer .col1 h1 a span {
+  color: rgba(0, 0, 0, 0.2);
+}
+#wrap #footer .col1 h1 a em {
+  color: rgba(0, 0, 0, 0.2);
+}
+#wrap #footer .col2 {
+  width: calc(100% - 200px);
+  height: 100%;
+  padding-left: 40px;
+}
+#wrap #footer .col2 .row1 {
+  width: 100%;
+  height: auto;
+  padding: 15px 0;
+}
+#wrap #footer .col2 .row1 a {
+  color: #666;
+  font-size: 14px;
+}
+#wrap #footer .col2 .row1 i {
+  margin: 10px 0;
+  color: #ccc;
+  font-size: 14px;
+}
+#wrap #footer .col2 .row2 {
+  width: 100%;
+  height: auto;
+}
+#wrap #footer .col2 .row2 .contents {
+  padding-top: 10px;
+  line-height: 160%;
+}
+#wrap #footer .col2 .row2 .contents address {
+  color: #666;
+  font-size: 13px;
+}
+#wrap #footer .col2 .row2 .contents p {
+  color: #666;
+  font-size: 13px;
+}
+#wrap .layer-popup {
+  z-index: 4;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  display: none;
+}
+#wrap .layer-popup.on {
+  display: flex;
+}
+#wrap .layer-popup .container {
+  width: 600px;
+  height: auto;
+  background: #fff;
+  margin: auto;
+  padding: 30px;
+  border-radius: 5px;
+}
+#wrap .layer-popup .container .title {
+  width: 100%;
+}
+#wrap .layer-popup .container .title h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #222;
+  text-transform: uppercase;
+  border-bottom: 2px solid #444;
+  padding-bottom: 20px;
+}
+#wrap .layer-popup .container .content {
+  width: 100%;
+  padding: 30px 0 30px 0;
+  border-bottom: 1px solid #ccc;
+}
+#wrap .layer-popup .container .content ul {
+  width: 100%;
+}
+#wrap .layer-popup .container .content ul li {
+  font-size: 14px;
+  line-height: 170%;
+  padding: 10px 0;
+}
+#wrap .layer-popup .container .button-box {
+  width: 100%;
+  text-align: right;
+  padding-top: 20px;
+}
+#wrap .layer-popup .container .button-box button {
+  width: 100px;
+  height: 40px;
+  border: 0;
+  background: #ccc;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 3px;
+}
