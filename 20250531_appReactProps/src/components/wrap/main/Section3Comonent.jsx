@@ -47,7 +47,7 @@ export default function Section3Comonent({modalOpenEvent}) {
         // 최상위 컴포넌트가 보내준 모달열기 함수
         modalOpenEvent({
             // isOn: true,
-            공지글: item.공지글
+            item: item
         });
     };
 
