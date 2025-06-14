@@ -63,7 +63,10 @@
                             left: 190px;    
                             width: calc(100vw - 17px - 190px); /* Viewport width vw 반응형 */
                             background: rgba(50,170,240, 1);
-                            display: none;
+                            // display: none;
+                            // &.on {
+                            //     display: none;
+                            // }
                             ul {
                                 width: 100%;
                                 padding: 30px 20px;

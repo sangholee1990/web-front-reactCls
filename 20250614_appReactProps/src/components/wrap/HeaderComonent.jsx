@@ -104,19 +104,28 @@ export default function HeaderComonent() {
                      {GNB.map((item, idx) => (
                             <li key={idx}>
                                 <a href="!#" className="main-btn" title={item.메인메뉴} onMouseEnter={(event) => onMouseEnterMainBtn(event, idx)}>{item.메인메뉴}</a>
-                                <div className={`sub sub${idx + 1}${sub[idx] == true ? ' on': '' }`}>
-                                    <ul>
-                                        {item.서브메뉴.map((subList, subIndex) => (
-                                            <li key={`${idx}-${subIndex}`}>
-                                                {subList.map((subItem, itemIndex) => (
-                                                    <span key={`${idx}-${subIndex}-${itemIndex}`}>
-                                                        <a href="!#">{subItem}</a>
-                                                    </span>
+                                {/* <div className={`sub sub${idx + 1}${sub[idx] == /true ? ' on': '' }`}> */}
+
+                                {/* 조건부 연산자 && */}
+                                {
+                                    sub[idx] &&
+                                    (
+                                        <div className={`sub sub${idx + 1}`}>
+                                            <ul>
+                                                {item.서브메뉴.map((subList, subIndex) => (
+                                                    <li key={`${idx}-${subIndex}`}>
+                                                        {subList.map((subItem, itemIndex) => (
+                                                            <span key={`${idx}-${subIndex}-${itemIndex}`}>
+                                                                <a href="!#">{subItem}</a>
+                                                            </span>
+                                                        ))}
+                                                    </li>
                                                 ))}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
+                                            </ul>
+                                        </div>
+                                    )
+                                }
+                                
                             </li>
                         ))}
                     </ul>
