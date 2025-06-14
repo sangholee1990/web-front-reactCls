@@ -3,31 +3,50 @@ import './scss/Section3Comonent.scss'
 
 export default function Section3Comonent({modalOpenEvent}) {
 
+    // const [state, setState] = React.useState({
+    //     공지사항: [{
+    //             공지글: "한글 더미 텍스트입니다. 이 문장은 실제 내용이 아니며, 디자인 레이아웃을 확인하기 위한 예시입니다.",
+    //             날짜: "2024-09-10",
+    //             className: "open-btn"
+    //         },
+    //         {
+    //             공지글: "가나다라마바사 아자차카타파하. 이 자리를 채우기 위한 한국어 예시 텍스트입니다. 내용을 적절히 채워주세요.",
+    //             날짜: "2024-09-10"
+    //         },
+    //         {
+    //             공지글: "샘플 텍스트입니다. 이 텍스트는 의미를 가지지 않으며, 오직 공간을 채우기 위해 사용됩니다. 길이를 조절할 수 있습니다.",
+    //             날짜: "2024-09-10"
+    //         },
+    //         {
+    //             공지글: "아름다운 우리 강산, 푸르게 푸르게. 화면 구성을 위한 임시 한글 텍스트이며, 실제 의미는 없습니다.",
+    //             날짜: "2024-09-10"
+    //         }
+    //     ],
+    //     갤러리: [
+    //         { src: "./images/gallery1.jpg", alt: "gallery1", title: "gallery1" },
+    //         { src: "./images/gallery2.jpg", alt: "gallery2", title: "gallery2" },
+    //         { src: "./images/gallery3.jpg", alt: "gallery3", title: "gallery3" }
+    //     ],
+    // });
     const [state, setState] = React.useState({
-        공지사항: [{
-                공지글: "한글 더미 텍스트입니다. 이 문장은 실제 내용이 아니며, 디자인 레이아웃을 확인하기 위한 예시입니다.",
-                날짜: "2024-09-10",
-                className: "open-btn"
-            },
-            {
-                공지글: "가나다라마바사 아자차카타파하. 이 자리를 채우기 위한 한국어 예시 텍스트입니다. 내용을 적절히 채워주세요.",
-                날짜: "2024-09-10"
-            },
-            {
-                공지글: "샘플 텍스트입니다. 이 텍스트는 의미를 가지지 않으며, 오직 공간을 채우기 위해 사용됩니다. 길이를 조절할 수 있습니다.",
-                날짜: "2024-09-10"
-            },
-            {
-                공지글: "아름다운 우리 강산, 푸르게 푸르게. 화면 구성을 위한 임시 한글 텍스트이며, 실제 의미는 없습니다.",
-                날짜: "2024-09-10"
-            }
-        ],
-        갤러리: [
-            { src: "./images/gallery1.jpg", alt: "gallery1", title: "gallery1" },
-            { src: "./images/gallery2.jpg", alt: "gallery2", title: "gallery2" },
-            { src: "./images/gallery3.jpg", alt: "gallery3", title: "gallery3" }
-        ],
+        공지사항: [],
+        갤러리: []
     });
+
+
+    React.useEffect(() => {
+        fetch("./data/section3.json", {
+                method: 'GET'
+            })
+            .then((res) => res.json())
+            .then((res) => {
+                setState({
+                    공지사항: res.공지사항,
+                    갤러리: res.갤러리
+                });
+            })
+            .catch();
+    }, [])
 
     const [isOn, setIsOn] = React.useState(false);
 

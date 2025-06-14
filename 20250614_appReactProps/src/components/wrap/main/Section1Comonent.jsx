@@ -3,14 +3,15 @@ import './scss/Section1Comonent.scss'
 
 export default function Section1Comonent() {
 
-    const [state] = useState({
-        slide: [
-            { id: 'slide3-clone', src: './images/slide3.jpg', alt: '푸른마을 이미지 슬라이드3', title: '푸른마을 이미지 슬라이드3', className: 'slide slide3 last' },
-            { id: 'slide1', src: './images/slide1.jpg', alt: '푸른마을 이미지 슬라이드1', title: '푸른마을 이미지 슬라이드1', className: 'slide slide1' },
-            { id: 'slide2', src: './images/slide2.jpg', alt: '푸른마을 이미지 슬라이드2', title: '푸른마을 이미지 슬라이드2', className: 'slide slide2' },
-            { id: 'slide3', src: './images/slide3.jpg', alt: '푸른마을 이미지 슬라이드3', title: '푸른마을 이미지 슬라이드3', className: 'slide slide3' },
-            { id: 'slide1-clone', src: './images/slide1.jpg', alt: '푸른마을 이미지 슬라이드1', title: '푸른마을 이미지 슬라이드1', className: 'slide slide1 first' },
-        ],
+    const [state, setState] = useState({
+        // slide: [
+        //     { id: 'slide3-clone', src: './images/slide3.jpg', alt: '푸른마을 이미지 슬라이드3', title: '푸른마을 이미지 슬라이드3', className: 'slide slide3 last' },
+        //     { id: 'slide1', src: './images/slide1.jpg', alt: '푸른마을 이미지 슬라이드1', title: '푸른마을 이미지 슬라이드1', className: 'slide slide1' },
+        //     { id: 'slide2', src: './images/slide2.jpg', alt: '푸른마을 이미지 슬라이드2', title: '푸른마을 이미지 슬라이드2', className: 'slide slide2' },
+        //     { id: 'slide3', src: './images/slide3.jpg', alt: '푸른마을 이미지 슬라이드3', title: '푸른마을 이미지 슬라이드3', className: 'slide slide3' },
+        //     { id: 'slide1-clone', src: './images/slide1.jpg', alt: '푸른마을 이미지 슬라이드1', title: '푸른마을 이미지 슬라이드1', className: 'slide slide1 first' },
+        // ],
+        slide: [],
         link: [
             { type: 'image', src: './images/link1.jpg', alt: 'link1', title: 'link1' },
             { type: 'separator' },
@@ -23,6 +24,20 @@ export default function Section1Comonent() {
     // 0. 카운트 상태변수 설정 초기값 0
     // 리액트에서 제공하는 상태변수만 제어 함수
     const [cnt, setCnt] = React.useState(0);
+
+    
+    React.useEffect(() => {
+        fetch("./data/slide.json", {
+                method: 'GET'
+            })
+            .then((res) => res.json())
+            .then((res) => {
+                setState({
+                    slide: res.slide
+                });
+            })
+            .catch();
+    }, [])
 
     // 1. 메인슬라이드 1씩 카운트 함수
     // const nextCount=()=>{

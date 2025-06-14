@@ -25,7 +25,8 @@ export default function FooterComonent() {
                 </div>
                 <div className="row2">
                     <div className="contents">
-                        <address>04531 서울특별시 중구 남대문로 39 (남대문로3가) 대표전화 : 02-759-4114</address>
+                        {/* <address>04531 서울특별시 중구 남대문로 39 (남대문로3가) 대표전화 : 02-759-4114</address> */}
+                        <address></address>
                         <p>Copyright(c) Bank of Korea. All rights reserved.</p>
                     </div>
                 </div>
