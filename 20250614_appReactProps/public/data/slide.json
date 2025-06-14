@@ -1,0 +1,38 @@
+{
+    "slide": [{
+            "id": "slide3-clone",
+            "src": "./images/slide3.jpg",
+            "alt": "푸른마을 이미지 슬라이드3",
+            "title": "푸른마을 이미지 슬라이드3",
+            "className": "slide slide3 last"
+        },
+        {
+            "id": "slide1",
+            "src": "./images/slide1.jpg",
+            "alt": "푸른마을 이미지 슬라이드1",
+            "title": "푸른마을 이미지 슬라이드1",
+            "className": "slide slide1"
+        },
+        {
+            "id": "slide2",
+            "src": "./images/slide2.jpg",
+            "alt": "푸른마을 이미지 슬라이드2",
+            "title": "푸른마을 이미지 슬라이드2",
+            "className": "slide slide2"
+        },
+        {
+            "id": "slide3",
+            "src": "./images/slide3.jpg",
+            "alt": "푸른마을 이미지 슬라이드3",
+            "title": "푸른마을 이미지 슬라이드3",
+            "className": "slide slide3"
+        },
+        {
+            "id": "slide1-clone",
+            "src": "./images/slide1.jpg",
+            "alt": "푸른마을 이미지 슬라이드1",
+            "title": "푸른마을 이미지 슬라이드1",
+            "className": "slide slide1 first"
+        }
+    ]
+}
