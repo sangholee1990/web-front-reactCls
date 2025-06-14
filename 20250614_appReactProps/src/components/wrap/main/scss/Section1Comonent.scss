@@ -21,7 +21,8 @@
                         position: relative;
                         display: flex;
                         margin-left: -100%;
-                        left: -100% * 0;  /* 테스팅 */
+                        // left: -100% * 0;  /* 테스팅 */
+                        // left: -100% * 1;  /* 테스팅 */
                         .slide {
                             width:100%;
                             height:100%;
