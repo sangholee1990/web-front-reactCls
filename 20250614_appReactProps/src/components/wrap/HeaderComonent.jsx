@@ -73,6 +73,22 @@ export default function HeaderComonent() {
         },
     ])
 
+    const [sub, setSub] = React.useState([true, false, false, false]);
+
+    // 메인버튼 마우스 오버 이벤트 (마우스 엔터 이벤트)
+    const onMouseEnterMainBtn=(e, n) => {
+        // console.log(e);
+        // console.log(n);
+        let imsi = [false, false, false, false];
+        imsi[n] = true;
+        setSub(imsi);
+        console.log(imsi);
+    }
+
+    const onMouseLeaveNav=() => {
+        let imsi = [false, false, false, false];
+        setSub(imsi);
+    }
 
     return (
         // <header id="header">
@@ -83,12 +99,12 @@ export default function HeaderComonent() {
                 <h1><a href="./" title={state.로고}><span>{state.로고.slice(0, 2)}</span><em>{state.로고.slice(2, 4)}</em></a></h1>
             </div>
             <div className="row2">
-                <nav id="nav">
+                <nav id="nav" onMouseLeave={onMouseLeaveNav}>
                     <ul>
                      {GNB.map((item, idx) => (
                             <li key={idx}>
-                                <a href="!#" className="main-btn" title={item.메인메뉴}>{item.메인메뉴}</a>
-                                <div className={`sub sub${idx + 1}`}>
+                                <a href="!#" className="main-btn" title={item.메인메뉴} onMouseEnter={(event) => onMouseEnterMainBtn(event, idx)}>{item.메인메뉴}</a>
+                                <div className={`sub sub${idx + 1}${sub[idx] == true ? ' on': '' }`}>
                                     <ul>
                                         {item.서브메뉴.map((subList, subIndex) => (
                                             <li key={`${idx}-${subIndex}`}>
