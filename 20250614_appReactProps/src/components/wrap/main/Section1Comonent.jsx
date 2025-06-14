@@ -31,13 +31,24 @@ export default function Section1Comonent() {
 
     // 로딩시 실행하는 타이머 효과 적용 => 유즈이펙트 훅을 사용한다.
     // 2. 타이머 사용 3초 간격으로 1씩 증가시킨다.
-    React.useEffect(() => {
+    // React.useEffect(() => {
+    //     const setId = setInterval(() => {
+    //         setCnt(cnt => cnt + 1);
+    //         // setCnt(cnt => cnt - 1);
+    //         return () => clearInterval(setId);
+    //     }, 6000)
+    // }, [])
+
+   React.useEffect(() => {
         const setId = setInterval(() => {
             setCnt(cnt => cnt + 1);
             // setCnt(cnt => cnt - 1);
-            return () => clearInterval(setId);
-        }, 3000)
-    }, [])
+        }, 3000);
+
+        return () => {
+            clearInterval(setId);
+        }
+    }, []);
 
     // 3. 리액트 선택자 슬라이드 랩퍼 박스 선택 정의
     // document.querySelector('.slide-wrap');
@@ -65,12 +76,10 @@ export default function Section1Comonent() {
                 setCnt(2);
             }, 100)
         } else {
-            slideWrap.current.style.transition = 'left 0.6s ease-in-out';
+            slideWrap.current.style.transition = 'left 0.3s ease-in-out';
             slideWrap.current.style.left = `${-100 * cnt}%`;
         }
     }, [cnt])
-    
-
 
     return (
         // <section id="section1">
