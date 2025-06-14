@@ -1,3 +1,5 @@
+import './scss/ModalComonent.scss'
+
 export default function ModalComonent({모달, modalCloseEvent}) {
     
     const modalCloseBtn=()=>{

@@ -1,4 +1,5 @@
 import React from "react";
+import './scss/Section3Comonent.scss'
 
 export default function Section3Comonent({modalOpenEvent}) {
 

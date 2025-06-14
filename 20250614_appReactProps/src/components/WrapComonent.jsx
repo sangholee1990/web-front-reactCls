@@ -3,6 +3,7 @@ import FooterComonent from "./wrap/FooterComonent";
 import HeaderComonent from "./wrap/HeaderComonent";
 import MainComonent from "./wrap/MainComonent";
 import ModalComonent from "./wrap/ModalComonent";
+import './scss/WrapComonent.scss'
 
 export default function WrapComonent() {
 

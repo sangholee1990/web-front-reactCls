@@ -1,3 +1,5 @@
+import './scss/Section2Comonent.scss'
+
 export default function Section2Comonent() {
     return (
         // <section id="section2">

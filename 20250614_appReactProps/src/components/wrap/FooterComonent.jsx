@@ -1,3 +1,5 @@
+import './scss/FooterComonent.scss'
+
 export default function FooterComonent() {
     return (
         // <div id="footer">

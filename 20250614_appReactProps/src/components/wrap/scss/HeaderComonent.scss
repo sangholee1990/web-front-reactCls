@@ -1,0 +1,95 @@
+#wrap {
+    #header {
+        width: 200px;
+        height: 850px;
+        position: relative;
+        z-index: 3;
+        .row1 {
+            width: 100%;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* 로고 : 워드 타입 */
+            h1 {
+                width:100%;
+                a {
+                    font-size: 37.5px;
+                    font-weight: 600;
+                    display: block;
+                    width:100%;
+                    text-align: center;
+                    span {
+                        color:rgba(25, 28, 29, 0.7);
+                    }
+                    em   {
+                        color:rgba(200,70,100, 0.7);
+                    }
+                }
+            }
+        }
+        .row2 {
+            width: 100%;
+            height: calc(100% - 150px);
+            background: rgba(70,150,200, 1);
+            #nav {
+                width: 100%;
+                padding: 10px;
+                > ul {
+                    width: 100%;
+                    > li {
+                        width: 100%;
+                        > a {
+                            width: 100%;
+                            height: 50px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            font-size: 16px;
+                            font-weight: 600;
+                            color: #fff;
+                            background: rgba(70,150,200, 1);
+                            &:hover {
+                                background: rgba(50,170,240, 1);
+                            }
+                            &.on {
+                                background: rgba(50,170,240, 1);
+                            }
+                            
+                        }
+                        > .sub {
+                            position: absolute;
+                            top: 160px;
+                            left: 190px;    
+                            width: calc(100vw - 17px - 190px); /* Viewport width vw 반응형 */
+                            background: rgba(50,170,240, 1);
+                            display: none;
+                            ul {
+                                width: 100%;
+                                padding: 30px 20px;
+                                li {
+                                    width: 100%;
+                                    padding: 10px 0;
+                                    display: flex;
+                                    span {
+                                        width:110px;
+                                        a {    
+                                            font-size: 14px;
+                                            font-weight: 500;
+                                            color: #fff;
+                                            background: rgba(50,170,240, 1);
+                                            padding: 6px 10px;
+                                            &:hover { 
+                                                background: rgba(70,150,200, 1);
+                                            }                                            
+                                        }
+                                    }
+                                }
+                            }
+                        }                        
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,6 +1,7 @@
 import Section1Comonent from "./main/Section1Comonent";
 import Section2Comonent from "./main/Section2Comonent";
 import Section3Comonent from "./main/Section3Comonent";
+import './scss/MainComonent.scss'
 
 export default function MainComonent({modalOpenEvent}) {
     return (

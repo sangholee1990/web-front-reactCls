@@ -1,4 +1,5 @@
 import React from 'react';
+import './scss/HeaderComonent.scss'
 
 export default function HeaderComonent() {
 
@@ -84,15 +85,15 @@ export default function HeaderComonent() {
             <div className="row2">
                 <nav id="nav">
                     <ul>
-                     {GNB.map((mainItem, mainIndex) => (
-                            <li key={mainIndex}>
-                                <a href="!#" className="main-btn" title={mainItem.메인메뉴}>{mainItem.메인메뉴}</a>
-                                <div className={`sub sub${mainIndex + 1}`}>
+                     {GNB.map((item, idx) => (
+                            <li key={idx}>
+                                <a href="!#" className="main-btn" title={item.메인메뉴}>{item.메인메뉴}</a>
+                                <div className={`sub sub${idx + 1}`}>
                                     <ul>
-                                        {mainItem.서브메뉴.map((subList, subIndex) => (
-                                            <li key={`${mainIndex}-${subIndex}`}>
+                                        {item.서브메뉴.map((subList, subIndex) => (
+                                            <li key={`${idx}-${subIndex}`}>
                                                 {subList.map((subItem, itemIndex) => (
-                                                    <span key={`${mainIndex}-${subIndex}-${itemIndex}`}>
+                                                    <span key={`${idx}-${subIndex}-${itemIndex}`}>
                                                         <a href="!#">{subItem}</a>
                                                     </span>
                                                 ))}

@@ -1,0 +1,116 @@
+#wrap {
+    #main {
+            #section3 {
+            width: 100%;
+            height: 250px;    
+            padding: 10px;
+            border-top: 1px solid #ddd;
+            .container {
+                width: 100%;
+                height: 100%;  
+                padding-top: 45px;
+                position: relative;
+                button {
+                    height: 46px;
+                    width:100px;
+                    position: absolute;
+                    top:0;    
+                    border:1px solid #ccc;
+                    border-radius: 5px 5px 0 0;
+                    font-size: 16px;
+                    &.notice-btn {
+                        border-bottom:0;
+                        left:10px;
+                        background: #fff;
+                        z-index: 3;
+                        cursor: default;  
+                       &.on {
+                            background: #eee;
+                            z-index: 1;
+                            cursor: pointer;   
+                        }
+                    }
+                    &.gallery-btn {
+                        left:110px;
+                        background: #eee;
+                        cursor: pointer;    
+                        z-index: 1;
+                        &.on {
+                            border-bottom:0;
+                            background: #fff;
+                            z-index: 3;
+                            cursor: default;  
+                        }
+                    }
+                }
+                .notice-box {
+                    width:100%;
+                    height: 100%;
+                    border: 1px solid #ccc;
+                    position: relative;
+                    z-index: 2;
+                    padding: 20px 50px;
+                    display:flex ;
+                    align-items: center;
+                    &.on {
+                        display: none;
+                    }
+                    ul {
+                        width:100%;
+                        li {
+                            width:100%;
+                            display: flex;
+                            justify-content: space-between;
+                            line-height: 200%;
+                            a {
+                                width: calc(100% - 20%);
+                                white-space: nowrap;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                &:hover {
+                                    text-decoration: underline;
+                                }
+                            }
+                            span {
+                                width: 100px;
+                                color: #999;
+                            }
+                        }
+                    }
+                }
+                .gallery-box {
+                    width:100%;
+                    height: 100%;
+                    border: 1px solid #ccc;
+                    position: relative;
+                    z-index: 2;
+                    display:flex ;
+                    align-items: center;
+                    display: none;
+                    &.on {
+                        display: flex;
+                    }
+                    ul {
+                        display: flex;
+                        width:100%;
+                        li {
+                            width:33.333%;
+                            a {
+                                margin: 0 50px;
+                                display: block;
+                                width: auto;
+                                img {
+                                    width:100%;
+                                    transition: all 0.3s;
+                                    &:hover {
+                                        opacity: 0.7;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
