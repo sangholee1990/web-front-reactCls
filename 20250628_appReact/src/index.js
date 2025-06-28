@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import modal from "./store/modal.js"
+import { CookiesProvider } from 'react-cookie';
 
 // 스토어 생성
 const store = configureStore({
@@ -18,7 +19,9 @@ root.render(
     // <WrapComonent />
     <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Provider store={store}>
-            <WrapComonent />
+            <CookiesProvider>
+                <WrapComonent />
+            </CookiesProvider>
         </Provider>
     </BrowserRouter>
 );

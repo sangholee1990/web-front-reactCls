@@ -4,9 +4,12 @@ import './scss/Section3Component.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { setModalAction } from '../../../store/modal';
 // import { modalCloseEvent } from '../../../store/modal';
+import { useCookies } from 'react-cookie';
 
 // export default function Section3Component({modalOpenEvent}) {
 export default function Section3Component() {
+
+    const [cookies, ] = useCookies();
 
     const [state, setState] = useState({
         공지사항: [],  // map 함수 사용할 내용 이므로 반드 빈배열 사용 해야함.
@@ -14,10 +17,10 @@ export default function Section3Component() {
     })
     const [isOn, setIsOn] = React.useState(false);  
 
-    const 모달 = useSelector((state) => {
-        // return state.modal.모달;
-        return state.modal;
-    })
+    // const 모달 = useSelector((state) => {
+    //     // return state.modal.모달;
+    //     return state.modal;
+    // })
     const dispatch = useDispatch();
 
     useEffect(()=>{       
@@ -38,6 +41,21 @@ export default function Section3Component() {
 
     },[])
 
+    // 로딩시 상태관리 변수 중 공지사항 값이 저장되면 
+    // 모달창을 자동으로 띄운다
+     useEffect(() => {
+         if (state.공지사항 && state.공지사항[0]) {
+
+            // 쿠키 확인
+            console.log(cookies);
+            if (cookies.myCookie === "hide-popup-for-24h") {
+                return
+            }
+
+            const obj = {isOn: true, 공지글: state.공지사항[0].공지글}
+            dispatch(setModalAction(obj));
+        }
+     }, [state.공지사항[0]?.공지글])
 
 
     // 갤러리버튼 클릭 이벤트 => 화살표 함수 사용
@@ -61,9 +79,7 @@ export default function Section3Component() {
 
         const obj = {isOn: true, 공지글: row.공지글}
         dispatch(setModalAction(obj));
-        
-        console.log(obj);
-
+        // console.log(obj);
     }
     return (
         <section id="section3">
