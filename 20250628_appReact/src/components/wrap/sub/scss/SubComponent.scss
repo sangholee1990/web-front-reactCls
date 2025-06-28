@@ -1,0 +1,15 @@
+.sub {
+    width: calc(100% - 200px);
+    height: calc(100vh - 120px);
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    &#sub1 {background-color: #c99;}
+    &#sub2 {background-color: #99c;}
+    &#sub3 {background-color: #9c9;}
+    &#sub4 {background-color: #9cc;}
+    h1 {
+        font-size: 100px;
+        color:#fff;
+    }
+}
