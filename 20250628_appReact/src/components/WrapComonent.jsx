@@ -51,9 +51,6 @@ export default function WrapComonent(){
                     <Route path="/sub3" element={<Sub3Component />} />
                     <Route path="/sub4" element={<Sub4Component />} />
                     <Route path="*" element={<Page404Component />} />
-                    {/* <DetailViewProductComponent /> */}
-                    {/* 상세페이지, 장바구니 */}
-
                 </Route>
             </Routes>
             <FooterComonent />

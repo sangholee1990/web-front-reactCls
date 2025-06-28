@@ -1,14 +1,22 @@
 import React, {useState, useEffect } from 'react';
 import axios from 'axios';
 import './scss/Section3Component.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import { modalOpenEvent } from '../../../store/modal';
 
-export default function Section3Component({modalOpenEvent}) {
+// export default function Section3Component({modalOpenEvent}) {
+export default function Section3Component() {
 
     const [state, setState] = useState({
         공지사항: [],  // map 함수 사용할 내용 이므로 반드 빈배열 사용 해야함.
         갤러리: []
     })
     const [isOn, setIsOn] = React.useState(false);  
+
+    const 모달 = useSelector((state) => {
+        return state.modal.모달;
+    })
+    const dispatch = useDispatch();
 
     useEffect(()=>{       
 
@@ -30,8 +38,6 @@ export default function Section3Component({modalOpenEvent}) {
 
 
 
-
-
     // 갤러리버튼 클릭 이벤트 => 화살표 함수 사용
     const onClickGalleryBtn=(e)=>{
         e.preventDefault();
@@ -47,13 +53,16 @@ export default function Section3Component({modalOpenEvent}) {
 
     // 공지사항 공지글 클릭 이벤트 => 모달창 열기
     // 공지글 전달하기
-    const onClickOpenBtn=(e, 공지글)=>{
+    const onClickOpenBtn=(e, row)=>{
         e.preventDefault();        
-        modalOpenEvent(공지글); // 최상위 컴포넌트가 보내준 모달열기 함수
+        // modalOpenEvent(공지글); // 최상위 컴포넌트가 보내준 모달열기 함수
+
+        const obj = {공지글: row.공지글}
+        dispatch(modalOpenEvent(obj));
+        
+        console.log(obj);
+
     }
-
-
-
 
 
     return (
@@ -78,7 +87,7 @@ export default function Section3Component({modalOpenEvent}) {
                                     <a 
                                       href="!#" 
                                       className="open-btn"
-                                      onClick={(e)=>onClickOpenBtn(e, row.공지글)}
+                                      onClick={(e)=>onClickOpenBtn(e, row)}
                                     >{row.공지글}</a>
                                     <span>{row.날짜}</span>
                                 </li>
