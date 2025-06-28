@@ -33,14 +33,11 @@ export default function ModalComonent(){  // 프롭스:부모>자식
 
         // 날짜 셋팅
         let toDay = new Date();
-        console.log(toDay);
-
-        toDay.setDate(toDay.getDate() + 1);
+        // toDay.setDate(toDay.getDate() + 1);
+        toDay.setDate(toDay.getDate() + 3);
         console.log(toDay);
 
         setCookie('myCookie', 'hide-popup-for-24h', {path: '/', expires: toDay});
-
-        // alert(`'myCookie' 쿠키가 24시간 뒤(${toDay.toLocaleString()})에 만료되도록 설정되었습니다.`);
     }
    
 
