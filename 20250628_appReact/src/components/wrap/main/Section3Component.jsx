@@ -48,7 +48,8 @@ export default function Section3Component() {
 
             // 쿠키 확인
             console.log(cookies);
-            if (cookies.myCookie === "hide-popup-for-24h") {
+            // if (cookies.myCookie === "hide-popup-for-24h") {
+            if (cookies.myCookie && cookies.myCookie.includes("hide-popup-for-24h")) {
                 return
             }
 
