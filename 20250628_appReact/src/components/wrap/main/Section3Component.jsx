@@ -2,7 +2,8 @@ import React, {useState, useEffect } from 'react';
 import axios from 'axios';
 import './scss/Section3Component.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { modalOpenEvent } from '../../../store/modal';
+import { setModalAction } from '../../../store/modal';
+// import { modalCloseEvent } from '../../../store/modal';
 
 // export default function Section3Component({modalOpenEvent}) {
 export default function Section3Component() {
@@ -14,7 +15,8 @@ export default function Section3Component() {
     const [isOn, setIsOn] = React.useState(false);  
 
     const 모달 = useSelector((state) => {
-        return state.modal.모달;
+        // return state.modal.모달;
+        return state.modal;
     })
     const dispatch = useDispatch();
 
@@ -57,14 +59,12 @@ export default function Section3Component() {
         e.preventDefault();        
         // modalOpenEvent(공지글); // 최상위 컴포넌트가 보내준 모달열기 함수
 
-        const obj = {공지글: row.공지글}
-        dispatch(modalOpenEvent(obj));
+        const obj = {isOn: true, 공지글: row.공지글}
+        dispatch(setModalAction(obj));
         
         console.log(obj);
 
     }
-
-
     return (
         <section id="section3">
             <div className="container">
@@ -112,9 +112,6 @@ export default function Section3Component() {
                     }
                     </ul>
                 </div>
-
-
-            
             </div>
         </section>
     );

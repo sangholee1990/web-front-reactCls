@@ -1,12 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux';
 import './scss/ModalComonent.scss';
-import { modalCloseEvent } from '../../store/modal';
+// import { modalCloseEvent } from '../../store/modal';
+import { setModalAction } from '../../store/modal';
 
 // export default function ModalComonent({모달, modalCloseEvent}){  // 프롭스:부모>자식  
 export default function ModalComonent(){  // 프롭스:부모>자식  
     
     const 모달 = useSelector((state) => {
-        return state.modal.모달;
+        // return state.modal.모달;
+        return state.modal;
     })
      
     const dispatch = useDispatch();
@@ -18,8 +20,11 @@ export default function ModalComonent(){  // 프롭스:부모>자식
         // 유즈디스패처 useDispatch() 훅
         
         // 패일로드
-        const obj = {공지글: ''}
-        dispatch(modalCloseEvent(obj));
+        // const obj = {공지글: ''}
+        // dispatch(modalCloseEvent(obj));
+
+        const obj = {isOn: false, 공지글: ''}
+        dispatch(setModalAction(obj));
     }
    
 
