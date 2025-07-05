@@ -6,7 +6,10 @@ import axios from 'axios';
 export default function Sub1Component(props) {
 
     const [state, setState] = React.useState({
-        할일목록: [] 
+        할일목록: [],
+        idx: '',
+        만료일: '',
+        할일: '',
     });
 
     const [chk, setChk] = React.useState(false);
@@ -97,9 +100,80 @@ export default function Sub1Component(props) {
         localStorage.setItem('TODO_LIST', JSON.stringify(result));
     }
 
+    // 날짜 입력 상자 이벤트
+    const onChangeTodoDate = (e) => {
+        console.log(e.target.value);
 
+        setState({
+            ...state,
+            만료일: e.target.value
+        });
+    }
 
+    const onChangeTodoInput = (e) => {
+        console.log(e.target.value);
 
+        setState({
+            ...state,
+            할일: e.target.value
+        });
+    }
+    
+    // 저장 버튼
+    const onClickTodoSave = (e) => {
+        e.preventDefault();
+
+        let 할일목록 = state.할일목록
+
+        // 자동 증가 번호
+        let maxNum = 0;
+        state.할일목록.map((item) => {
+            if (maxNum < item.idx) {
+                maxNum = item.idx
+            }
+        });
+
+        if (!state.만료일) {
+            alert('만료일을 선택해주세요.');
+            return;
+        }
+
+        if (!state.할일 || state.할일.trim() === '') {
+            alert('할 일을 입력해주세요.');
+            return;
+        }
+
+         const isDuplicate = state.할일목록.some(item =>
+             item.할일.trim() === state.할일.trim() && item.만료일 === state.만료일
+         );
+
+         if (isDuplicate) {
+             alert('동일한 내용과 만료일의 할 일이 이미 존재합니다.');
+             return;
+         }
+        
+        할일목록 = [
+            {
+                idx: maxNum + 1,
+                할일: state.할일,
+                만료일: state.만료일,
+                완료: false
+            }, 
+             ...할일목록,
+        ]
+
+        localStorage.setItem('TODO_LIST', JSON.stringify(할일목록));
+        
+       setState({
+            ...state,
+            할일목록: 할일목록,
+            idx: '',
+            할일: '',
+            만료일: '',
+            완료: false,
+        });
+    }
+    
 
     return (
         <main id='sub1' className='sub'>
@@ -110,10 +184,10 @@ export default function Sub1Component(props) {
                     </div>
                     <div className="input-box">
                         <form>
-                            <input type="datetime-local" name="todoDate" id="todoDate" />
+                            <input type="datetime-local" name="todoDate" id="todoDate" onChange={onChangeTodoDate} value={state.만료일} />
                             <div>
-                                <input type="text" name='todoInput' id='todoInput' />
-                                <button id='todoSave'>
+                                <input type="text" name='todoInput' id='todoInput' onChange={onChangeTodoInput} value={state.할일} />
+                                <button id='todoSave' onClick={onClickTodoSave}>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-plus-lg" viewBox="0 0 16 16">
                                         <path fillRule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
                                     </svg>
