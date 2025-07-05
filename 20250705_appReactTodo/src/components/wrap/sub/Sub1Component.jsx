@@ -178,6 +178,9 @@ export default function Sub1Component(props) {
             만료일: '',
             완료: false,
         });
+
+        // 업데이트 초기화
+        setUpdate(false);
     }
 
     // 수정 버튼
@@ -186,7 +189,7 @@ export default function Sub1Component(props) {
 
         setUpdate(true);
 
-       setState({
+        setState({
             ...state,
             idx: item.idx,
             할일: item.할일,
