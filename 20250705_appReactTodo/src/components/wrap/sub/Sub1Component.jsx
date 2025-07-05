@@ -17,11 +17,28 @@ export default function Sub1Component(props) {
             method: 'GET'
         })
         .then((res)=>{
-            console.log('axios api 성공')
-            console.log( res.data );
-            state.할일목록 = res.data.todoList;
-            
-            // localStorage.setItem('TODO_LIST', JSON.stringify(res.data.todoList));
+            // console.log('axios api 성공')
+            // console.log( res.data );
+
+            // 새로고침 또는 로딩 시 JSON 데이터 가져오기
+            // state.할일목록 = res.data.todoList;
+            if (JSON.parse(localStorage.getItem('TODO_LIST')).length > 0) {
+                setState({
+                    ...state,
+                    할일목록: JSON.parse(localStorage.getItem('TODO_LIST'))
+                });
+
+            } else {
+                setState({
+                    ...state,
+                    할일목록: res.data.todoList
+                })
+            }
+
+            // setState({
+            //     ...state,
+            //     할일목록: res.data.todoList
+            // })
         })
         .catch((err)=>{
             console.log(err)
@@ -30,13 +47,13 @@ export default function Sub1Component(props) {
     }, []);
 
     // 의존성 배열 사용
-    React.useEffect(() => {
-        try {
-            localStorage.setItem('TODO_LIST', JSON.stringify(state.할일목록));
-        } catch (err) {
-            return;
-        }
-    }, [state.할일목록])
+    // React.useEffect(() => {
+    //     try {
+    //         localStorage.setItem('TODO_LIST', JSON.stringify(state.할일목록));
+    //     } catch (err) {
+    //         return;
+    //     }
+    // }, [state.할일목록])
 
     // 체크이벤트 => 완료 여부
     const onChangeTodoComplete=(e, idx)=>{
@@ -59,6 +76,8 @@ export default function Sub1Component(props) {
             ...state,
             할일목록: imsi
         })
+
+        localStorage.setItem('TODO_LIST', JSON.stringify(imsi));
     }
 
     // 삭제 버튼 클릭 이벤트
@@ -75,6 +94,7 @@ export default function Sub1Component(props) {
             ...state,
             할일목록: result
         })
+        localStorage.setItem('TODO_LIST', JSON.stringify(result));
     }
 
 
