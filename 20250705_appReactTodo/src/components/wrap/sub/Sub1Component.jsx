@@ -13,6 +13,7 @@ export default function Sub1Component(props) {
     });
 
     const [chk, setChk] = React.useState(false);
+    const [update, setUpdate] = React.useState(false);
 
     React.useEffect(()=>{
         axios({
@@ -25,7 +26,7 @@ export default function Sub1Component(props) {
 
             // 새로고침 또는 로딩 시 JSON 데이터 가져오기
             // state.할일목록 = res.data.todoList;
-            if (JSON.parse(localStorage.getItem('TODO_LIST')).length > 0) {
+            if (localStorage.getItem('TODO_LIST') != null && JSON.parse(localStorage.getItem('TODO_LIST')).length > 0) {
                 setState({
                     ...state,
                     할일목록: JSON.parse(localStorage.getItem('TODO_LIST'))
@@ -123,15 +124,7 @@ export default function Sub1Component(props) {
     const onClickTodoSave = (e) => {
         e.preventDefault();
 
-        let 할일목록 = state.할일목록
-
-        // 자동 증가 번호
-        let maxNum = 0;
-        state.할일목록.map((item) => {
-            if (maxNum < item.idx) {
-                maxNum = item.idx
-            }
-        });
+        let 할일목록 = state.할일목록;
 
         if (!state.만료일) {
             alert('만료일을 선택해주세요.');
@@ -143,28 +136,41 @@ export default function Sub1Component(props) {
             return;
         }
 
-         const isDuplicate = state.할일목록.some(item =>
-             item.할일.trim() === state.할일.trim() && item.만료일 === state.만료일
-         );
+        const isDuplicate = state.할일목록.some(item =>
+            item.할일.trim() === state.할일.trim() && item.만료일 === state.만료일
+        );
 
-         if (isDuplicate) {
-             alert('동일한 내용과 만료일의 할 일이 이미 존재합니다.');
-             return;
-         }
-        
-        할일목록 = [
-            {
-                idx: maxNum + 1,
-                할일: state.할일,
-                만료일: state.만료일,
-                완료: false
-            }, 
-             ...할일목록,
-        ]
+        if (isDuplicate) {
+            alert('동일한 내용과 만료일의 할 일이 이미 존재합니다.');
+            return;
+        }
+
+        // 수정 상태이면
+        if (update) {
+            할일목록.map((item) => item.idx === state.idx ? {...item.할일=state.할일, ...item.만료일=state.만료일, ...item.완료=state.완료} : item);
+        } else {
+            // 자동 증가 번호
+            let maxNum = 0;
+            state.할일목록.map((item) => {
+                if (maxNum < item.idx) {
+                    maxNum = item.idx
+                }
+            });
+
+            할일목록 = [
+                {
+                    idx: maxNum + 1,
+                    할일: state.할일,
+                    만료일: state.만료일,
+                    완료: false
+                }, 
+                ...할일목록,
+            ]
+        }
 
         localStorage.setItem('TODO_LIST', JSON.stringify(할일목록));
         
-       setState({
+        setState({
             ...state,
             할일목록: 할일목록,
             idx: '',
@@ -173,7 +179,21 @@ export default function Sub1Component(props) {
             완료: false,
         });
     }
-    
+
+    // 수정 버튼
+    const onClickTodoUpdate = (e, item) => {
+        e.preventDefault();
+
+        setUpdate(true);
+
+       setState({
+            ...state,
+            idx: item.idx,
+            할일: item.할일,
+            만료일: item.만료일,
+            완료: item.완료,
+        });
+    }
 
     return (
         <main id='sub1' className='sub'>
@@ -212,8 +232,8 @@ export default function Sub1Component(props) {
                                                 checked={state.chk}
                                             />
                                             <p><strong className={item.완료?'on':''}>{item.할일}</strong> <em>{item.만료일}</em></p> 
-                                            <span>
-                                                <button className='todoUpdate'>
+                                            <span>  
+                                                <button className='todoUpdate' onClick={(e)=>onClickTodoUpdate(e, item)}>
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-clockwise" viewBox="0 0 16 16">
                                                         <path fillRule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>
                                                         <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/>
