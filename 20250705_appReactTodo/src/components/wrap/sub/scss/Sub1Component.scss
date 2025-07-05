@@ -1,0 +1,158 @@
+#sub1 {
+    align-items: flex-start;
+    #sectionTodoList {
+        width: 100%;
+        padding: 70px 0;
+        .container {
+            width: 100%;
+            max-width: 1300px;
+            margin: 0 auto;
+            background: #f4f4f4;
+            padding: 50px;
+            .title {
+                width: 100%;
+                text-align: center;
+                padding-bottom: 90px;
+                h2 {
+                    font-size: 40px;
+                    font-weight: 500;
+                    color: #000;
+                    letter-spacing: 1px;
+                }
+            }
+            .input-box {
+                width: 100%;
+                form {
+                    width: 100%;
+                    // 날짜 입력 상자
+                    #todoDate {
+                        width: 400px;
+                        height: 50px;
+                        border: 1px solid #ccc;
+                        border-radius: 5px;
+                        padding: 0 15px;
+                    }
+
+                    // 할일 입력상자, 저장버튼
+                    div{
+                        margin-top: 10px; 
+                        width: 100%;
+                        height: 60px;   
+                        position: relative;                                    
+                        #todoInput {
+                            position: relative;  
+                            z-index: 1;
+                            width: 100%;
+                            height: 100%;      
+                            border: 0;
+                            background: #fff;  
+                            transition: all 0.3s;
+                            outline-offset: -1px;
+                            outline: 1px solid transparent;
+                            border: 1px solid #ccc;  
+                            border-radius: 5px;
+                            padding: 0 20px;
+                            font-size: 18px;
+                            color: #444;
+                            &:focus {                                
+                                outline-color: #222;
+                            }                    
+                        }                    
+                        button {
+                            width: 60px;
+                            height: 100%;
+                            position: absolute;
+                            right: 0;
+                            top: 0;
+                            z-index: 2;
+                            border: 0;
+                            background: #777;
+                            cursor: pointer;
+                            transition: background 0.3s;
+                            svg {
+                                color: #fff;
+                                width: 25px;
+                                height: 25px;
+                                background: transparent
+                            }
+                            &:hover {
+                                background: #000;
+                            }
+                        }
+                    }
+                }
+            }
+            .list-box {
+                width: 100%;               
+                margin-top: 50px;
+                height: 310px;
+                overflow-y: auto;
+                ul {
+                    width: 100%;
+                    li {
+                        width: 100%;
+                        border-top: 1px solid #eee;
+                        background: #fff;
+                        &:last-child {
+                            border-bottom: 1px solid #eee;
+                        }
+                        div {
+                            padding: 0 10px;
+                            width: 100%;
+                            height: 50px;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            input[type='checkbox']{
+                                width: 20px;
+                                height: 20px;
+                            }
+                            p {
+                                width: calc(100% - 20px - 120px);
+                                margin: 0 auto 0 20px;
+                                display: flex;
+                                justify-content: space-between;   
+                                font-size: 16px;                         
+                                strong {
+                                   width: calc(100% - 200px); 
+                                   // 게시판 목록 표시 방법 
+                                   // 줄바꿈없이 말줄임 표시
+                                   white-space: nowrap;
+                                   overflow: hidden;
+                                   text-overflow: ellipsis;
+                                   font-weight: 400;
+                                   color: #555;
+                                   &.on{
+                                     text-decoration: line-through;  // 완료항목 취소선
+                                   }
+                                }
+                                em {
+                                   width: 200px;
+                                   text-align: right;
+                                   font-size: 15px;
+                                   color: #999;
+                                }
+                            }
+                            span {
+                                button {
+                                   width: 17px;
+                                   height: 17px;
+                                   border: 0;
+                                   background: transparent;
+                                   cursor: pointer;
+                                   &:nth-child(2){
+                                    margin-left: 30px;
+                                    color: #555;                                    
+                                   }
+                                   &:hover {
+                                     color: #c33;  
+                                   }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,147 @@
+import React from 'react';
+import './scss/SubComponent.scss';
+import './scss/Sub1Component.scss';
+import axios from 'axios';
+
+export default function Sub1Component(props) {
+
+    const [state, setState] = React.useState({
+        할일목록: [] 
+    });
+
+    const [chk, setChk] = React.useState(false);
+
+    React.useEffect(()=>{
+        axios({
+            url:'./data/todo_list.json',
+            method: 'GET'
+        })
+        .then((res)=>{
+            console.log('axios api 성공')
+            console.log( res.data );
+            state.할일목록 = res.data.todoList;
+            
+            // localStorage.setItem('TODO_LIST', JSON.stringify(res.data.todoList));
+        })
+        .catch((err)=>{
+            console.log(err)
+            console.log('axios api 실패')
+        });
+    }, []);
+
+    // 의존성 배열 사용
+    React.useEffect(() => {
+        try {
+            localStorage.setItem('TODO_LIST', JSON.stringify(state.할일목록));
+        } catch (err) {
+            return;
+        }
+    }, [state.할일목록])
+
+    // 체크이벤트 => 완료 여부
+    const onChangeTodoComplete=(e, idx)=>{
+        // console.log(  idx, e.target.checked,  e.target.value);
+        // map => 즉시 수정
+        // filter => 즉시 삭제
+
+        let imsi = state.할일목록;
+
+        if(e.target.checked){
+            setChk(true)
+            imsi.map((row)=> row.idx===idx ? {...row.완료=true} : row)
+        }
+        else {
+            setChk(false)
+            imsi.map((row)=> row.idx===idx ? {...row.완료=false} : row)
+        }
+
+        setState({
+            ...state,
+            할일목록: imsi
+        })
+    }
+
+    // 삭제 버튼 클릭 이벤트
+    const onClickTodoDelete=(e, idx)=>{
+        // filter()
+        let imsi = state.할일목록;
+        console.log( imsi )
+
+        // 삭제할 idx 만 제외하고 재배열 반환
+        const result = imsi.filter((item)=>item.idx!==idx);  
+
+        console.log( result )
+        setState({
+            ...state,
+            할일목록: result
+        })
+    }
+
+
+
+
+
+    return (
+        <main id='sub1' className='sub'>
+            <section id="sectionTodoList">
+                <div className="container">
+                    <div className="title">
+                        <h2>TODO LIST</h2>
+                    </div>
+                    <div className="input-box">
+                        <form>
+                            <input type="datetime-local" name="todoDate" id="todoDate" />
+                            <div>
+                                <input type="text" name='todoInput' id='todoInput' />
+                                <button id='todoSave'>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-plus-lg" viewBox="0 0 16 16">
+                                        <path fillRule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div className="list-box">
+                        <ul>
+                        {
+                            state.할일목록.map((item)=>{
+                                return (
+                                    <li key={item.idx}>
+                                        <div>
+                                            <input 
+                                                type="checkbox" 
+                                                name="todoComplete" 
+                                                id="todoComplete" 
+                                                
+                                                onChange={(e)=>onChangeTodoComplete(e, item.idx)}
+                                                value={item.할일}
+                                                checked={state.chk}
+                                            />
+                                            <p><strong className={item.완료?'on':''}>{item.할일}</strong> <em>{item.만료일}</em></p> 
+                                            <span>
+                                                <button className='todoUpdate'>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                                                        <path fillRule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>
+                                                        <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/>
+                                                    </svg>
+                                                </button> 
+                                                <button className='todoDelete' onClick={(e)=>onClickTodoDelete(e, item.idx)}>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-trash" viewBox="0 0 16 16">
+                                                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                                                        <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+                                                    </svg>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </li>
+                                )
+                            })
+                            
+                        }
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+    );
+}

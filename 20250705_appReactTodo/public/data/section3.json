@@ -1,0 +1,13 @@
+{
+    "공지사항": [
+        {"공지글":"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit, in! Odio, repellendus. Labore modi sapiente cumque dolor nihil debitis ullam nobis? Sunt praesentium labore sapiente deserunt autem obcaecati alias fuga?", "날짜":"2024-09-10"},
+        {"공지글":"Doloribus, maxime impedit officiis, ratione pariatur molestiae aperiam dolorem libero numquam at nesciunt mollitia atque omnis nostrum id beatae perferendis et vitae facilis assumenda necessitatibus dolores quis nemo placeat. Eius!", "날짜":"2024-09-09"},
+        {"공지글":"Exercitationem sit enim recusandae, delectus quod quaerat reiciendis tenetur rerum. Vero culpa nulla enim cupiditate? Qui totam, quis amet voluptatem atque iusto eius quibusdam placeat ea a nemo, dignissimos sunt.", "날짜":"2024-09-07"},
+        {"공지글":"Numquam eos explicabo illo ea fuga possimus! Nemo, ratione ab obcaecati consequatur debitis eaque, est voluptas commodi earum rerum quam at odio unde quod necessitatibus nihil facere! Qui, ipsum sed.", "날짜":"2024-09-05"}
+    ],
+    "갤러리": [
+        {"이미지":"./images/gallery1.jpg", "텍스트":"gallery1"},
+        {"이미지":"./images/gallery2.jpg", "텍스트":"gallery2"},
+        {"이미지":"./images/gallery3.jpg", "텍스트":"gallery3"}
+    ]
+}

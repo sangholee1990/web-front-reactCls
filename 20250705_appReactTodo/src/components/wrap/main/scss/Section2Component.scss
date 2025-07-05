@@ -1,0 +1,74 @@
+#wrap {  
+    #main {
+        #section2 {
+            width: 100%;
+            height: 200px;
+            padding: 10px;
+            .container {
+                width: 100%;
+                height: 100%;
+                a {
+                    display:flex;
+                    width: 100%;
+                    height: 100%;
+                    background: #f0f0f0;
+                    align-items: center;
+                    justify-content: center;
+                    position: relative;
+                    .content {
+                        display: flex;
+                        width:80%;    
+                        position: relative;
+                        z-index: 1;
+                        transition: all 0.3s;
+                        .col1 {
+                            width:150px;
+                            img {width:100%;transition: 0.3s;}
+                        }
+                        .col2 {
+                            padding-left: 30px;
+                            h2 {
+                                font-size: 20px;;
+                                font-weight: 600;
+                                color:#222;
+                                padding-bottom: 10px;
+                            }
+                            p {
+                                line-height: 140%;
+                                padding-right: 130px;
+                            }
+                        }
+                    }
+                    &:hover {
+                        .content {
+                            .col1 {
+                                img {
+                                    opacity: 0.8;
+                                }
+                            }
+                        }
+                    }
+                    .arrow-btn {
+                        z-index: 2;
+                        position: absolute;
+                        top: 50%;
+                        right: 13%;
+                        width: 50px;
+                        height: 10px;
+                        background: #000;
+                        /* border: 1px solid #000; */
+                        margin-top:-5px;
+                        border-radius: 5px;    
+                        transform-origin: calc(100% - 5px) 50%;  /*  수평 0 좌측시작  50% 가운데  100% 끝  수직 0% 바톰  50% 가운데  100%  탑*/
+                        &.btn1 {
+                            transform: rotate(45deg);
+                        }
+                        &.btn2 {
+                            transform: rotate(-45deg);
+                        }                        
+                    }
+                }
+            }
+        }
+    }
+}

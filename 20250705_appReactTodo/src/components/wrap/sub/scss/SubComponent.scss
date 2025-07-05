@@ -1,0 +1,16 @@
+.sub {
+    width: calc(100% - 200px);
+    height: calc(100% - 120px);
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    &#sub1 {background: #fff;}
+    &#sub2 {background-color: #99c;}
+    &#sub3 {background-color: #9c9;}
+    &#sub4 {background-color: #9cc;}
+    &#page404 {background-color: #cc9;}
+    h1 {
+        font-size: 100px;
+        color:#fff;
+    }
+}
